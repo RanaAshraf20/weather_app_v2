@@ -1,10 +1,11 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app_v2/models/weather_model.dart';
 
 class WeatherInfoBody extends StatelessWidget {
-  const WeatherInfoBody({super.key});
+  const WeatherInfoBody({super.key, required this.weatherModel});
 
+  final WeatherModel weatherModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,16 +26,15 @@ class WeatherInfoBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-                height: 40,
-                width: 40,
-                child: CachedNetworkImage(
+              height: 40,
+              width: 40,
+              child: CachedNetworkImage(
                 imageUrl: "http://via.placeholder.com/350x150",
-                placeholder: (context, url) => const CircularProgressIndicator(),
+                placeholder: (context, url) =>
+                    const CircularProgressIndicator(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-                
-              
-                ),
+            ),
             const Text('17',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26)),
             const Column(

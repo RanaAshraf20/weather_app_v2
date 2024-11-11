@@ -30,7 +30,9 @@ class HomeView extends StatelessWidget {
           if (state is WeatherFailerState) {
             return Text(state.failerMessage);
           } else if (state is WeatherLoadedState) {
-            return const WeatherInfoBody();
+            return WeatherInfoBody(
+              weatherModel: state.weatherModel,
+            );
           } else {
             return const NoWeatherBody();
           }
