@@ -7,14 +7,19 @@ class WeatherService {
   WeatherService({required this.dio});
 
   Future<WeatherModel> getCurrentWeather() async {
-    Response response = await dio.get(
-        'http://api.weath=666ad2f6cc3d4d6baf4141302242710&q=London&days=1');
-    if (response.statusCode == 200) {
+    try {
+      Response response = await dio.get(
+          'https://api.weatherapi.com/v1/forecast.json?key=666ad2f6cc3d4d6baf4141302242710&q=London&days=1');
+
       WeatherModel weatherModel = WeatherModel.fromJson(response.data);
       return weatherModel;
-    } else {
-      String errMessage = response.data?['error']['message']??'oops there is an error';
+    } on DioException catch (e) {
+      String errMessage = e.response?.data['error']['message'] ??
+          'oops there is an error, try later!';
       throw Exception(errMessage);
+    }catch (e){
+       throw Exception('oops there is an error, try later!');
     }
+   
   }
 }
