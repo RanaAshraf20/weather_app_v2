@@ -1,6 +1,8 @@
+import 'package:weather_app_v2/widgets/weather_info_body.dart';
+
 class WeatherModel {
   final String city;
-  final String time;
+  final DateTime time;
   final String image;
   final double avgTemp;
   final double maxTemp;
@@ -19,7 +21,7 @@ class WeatherModel {
   factory WeatherModel.fromJson(json) {
     return WeatherModel(
         city: json['location']['name'],
-        time: json['location']['localtime'],
+        time:DateTime.parse( json['location']['localtime']),
         image: json['forecast']['forecastday'][0]['day']['condition']['icon'],
         avgTemp: json['forecast']['forecastday'][0]['day']['avgtemp_c'],
         maxTemp: json['forecast']['forecastday'][0]['day']['maxtemp_c'],
