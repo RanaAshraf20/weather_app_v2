@@ -55,3 +55,7 @@ class WeatherInfoBody extends StatelessWidget {
     );
   }
 }
+
+DateTime dateTime({required String time}) {
+  return DateTime.parse(time);
+}
