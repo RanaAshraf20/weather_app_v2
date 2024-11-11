@@ -25,15 +25,12 @@ class WeatherInfoBody extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SizedBox(
-              height: 40,
-              width: 40,
-              child: CachedNetworkImage(
-                imageUrl: weatherModel.image,
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
+            CachedNetworkImage(
+              imageUrl: weatherModel.image.contains('https:')
+                  ? weatherModel.image
+                  : 'https:${weatherModel.image}',
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Text(weatherModel.avgTemp.round().toString(),
                 style:
