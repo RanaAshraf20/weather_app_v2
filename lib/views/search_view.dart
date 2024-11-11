@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app_v2/cubits/get_weather_cubit/get_current_weather_cubit.dart';
 import 'package:weather_app_v2/models/weather_model.dart';
 import 'package:weather_app_v2/services/weather_service.dart';
 
@@ -16,8 +18,9 @@ class SearchView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Center(
             child: TextField(
-              onSubmitted: (value) async{
-       
+              onSubmitted: (value) async {
+                BlocProvider.of<GetCurrentWeatherCubit>(context)
+                    .getWeather(cityName: value);
                 Navigator.pop(context);
               },
               decoration: InputDecoration(
