@@ -1,7 +1,11 @@
 class WeatherState {}
 
-class NoWeatherState extends WeatherState{}
+class NoWeatherState extends WeatherState {}
 
-class WeatherLoadedState extends WeatherState{}
+class WeatherLoadedState extends WeatherState {}
 
-class WeatherFailerState extends WeatherState{}
+class WeatherFailerState extends WeatherState {
+  final String failerMessage;
+
+  WeatherFailerState({required this.failerMessage});
+}
