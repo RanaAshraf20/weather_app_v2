@@ -1,5 +1,6 @@
-import 'package:bloc/bloc.dart';
+
 import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_v2/cubits/get_weather_cubit/get_current_weather_state.dart';
 import 'package:weather_app_v2/models/weather_model.dart';
 import 'package:weather_app_v2/services/weather_service.dart';

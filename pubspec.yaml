@@ -38,7 +38,8 @@ dependencies:
   cached_network_image: ^3.4.1
   path_provider: ^2.1.5
   dio: ^5.7.0
-  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
+
  
 
 dev_dependencies:
