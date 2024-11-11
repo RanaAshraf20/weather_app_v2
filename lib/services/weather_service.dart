@@ -8,8 +8,13 @@ class WeatherService {
 
   Future<WeatherModel> getCurrentWeather() async {
     Response response = await dio.get(
-        'http://api.weatherapi.com/v1/forecast.json?key=666ad2f6cc3d4d6baf4141302242710&q=London&days=1');
-    WeatherModel weatherModel = WeatherModel.fromJson(response.data);
-    return weatherModel;
+        'http://api.weath=666ad2f6cc3d4d6baf4141302242710&q=London&days=1');
+    if (response.statusCode == 200) {
+      WeatherModel weatherModel = WeatherModel.fromJson(response.data);
+      return weatherModel;
+    } else {
+      String errMessage = response.data?['error']['message']??'oops there is an error';
+      throw Exception(errMessage);
+    }
   }
 }
