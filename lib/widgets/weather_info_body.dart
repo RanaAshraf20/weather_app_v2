@@ -11,9 +11,9 @@ class WeatherInfoBody extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
-          'beni-suef',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+        Text(
+          weatherModel.city,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
         ),
         const Text(
           'updated at: 20:40',
@@ -29,24 +29,28 @@ class WeatherInfoBody extends StatelessWidget {
               height: 40,
               width: 40,
               child: CachedNetworkImage(
-                imageUrl: "http://via.placeholder.com/350x150",
+                imageUrl: weatherModel.image,
                 placeholder: (context, url) =>
                     const CircularProgressIndicator(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
-            const Text('17',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26)),
-            const Column(
-              children: [Text('maxTemp: 17'), Text('minTemp: 19')],
+            Text(weatherModel.avgTemp.round().toString(),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 26)),
+            Column(
+              children: [
+                Text('maxTemp: ${weatherModel.maxTemp.round()}'),
+                Text('minTemp: ${weatherModel.minTemp.round()}'),
+              ],
             ),
           ],
         ),
         const SizedBox(
           height: 100,
         ),
-        const Text('light',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32))
+        Text(weatherModel.weatherCondition,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 32))
       ],
     );
   }
