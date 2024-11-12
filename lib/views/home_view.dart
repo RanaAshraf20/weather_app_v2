@@ -28,7 +28,7 @@ class HomeView extends StatelessWidget {
         body: BlocBuilder<GetCurrentWeatherCubit, WeatherState>(
             builder: (context, state) {
           if (state is WeatherFailerState) {
-            return Text(state.failerMessage);
+            return Center(child: Text(state.failerMessage));
           } else if (state is WeatherLoadedState) {
             return WeatherInfoBody(
               weatherModel: state.weatherModel,
