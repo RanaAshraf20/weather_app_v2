@@ -32,7 +32,10 @@ class SearchView extends StatelessWidget {
                   hintStyle: const TextStyle(color: Colors.grey),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4),
-                      borderSide: const BorderSide(color: Colors.grey))),
+                      borderSide: const BorderSide(color: Colors.grey),),
+                      enabledBorder:OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4),
+                      borderSide: const BorderSide(color: Colors.grey),),)
             ),
           ),
         ));
